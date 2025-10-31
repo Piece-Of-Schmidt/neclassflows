@@ -1,0 +1,19 @@
+Package: NEClasFlows
+Title: Tools to Analyze Cross-National Reporting and Entity Flows
+Version: 0.1.0
+Authors@R: person("Tobias", "Schmidt", email = "tobias3.schmidt@tu-dortmund.de", role = c("aut", "cre"))
+Description: Helpers for cleaning, aggregating and visualizing reporting flows across countries and entity classes. Provides article-level matrices, monthly aggregations, thresholded hit counts, and publication-ready plots.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends: R (>= 4.1.0)
+Imports:
+  dplyr,
+  tidyr,
+  lubridate,
+  rlang,
+  stringr
+Suggests:
+  readr
+Config/testthat/edition: 3
