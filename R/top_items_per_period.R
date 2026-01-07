@@ -25,13 +25,12 @@ top_items_per_period <- function(df,
                                  ties  = c("keep","first")) {
   ties  <- match.arg(ties)
   
-  # --- Validation
-  if (!item %in% names(df)) stop(sprintf("Column '%s' not found.", item))
-  if (!label_col %in% names(df)) stop(sprintf("Column '%s' not found.", label_col))
-  
-  if (!is.null(label_of_interest)) {
-    df <- df[df[[label_col]] == label_of_interest, , drop = FALSE]
-  }
+  # Validation
+  req_cols <- c(date_col, item)
+  if (!is.null(by)) req_cols <- c(req_cols, by)
+  if (!is.null(label_of_interest)) req_cols <- c(req_cols, label_col)
+  validate_columns(df, required = unique(req_cols))  
+  if (!is.null(label_of_interest)) df <- df[df[[label_col]] == label_of_interest, , drop = FALSE]
   
   date_sym <- rlang::sym(date_col)
   itm_sym  <- rlang::sym(item)
