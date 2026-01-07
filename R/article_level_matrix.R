@@ -14,10 +14,11 @@ article_level_matrix <- function(df,
                                  label_col = "label",
                                  id_col    = "doc_id",
                                  value_col = NULL) {
-  stopifnot(id_col %in% names(df), label_col %in% names(df))
-  if (!is.null(value_col) && !(value_col %in% names(df))) {
-    stop("value_col not found in df")
-  }
+  
+  # Validation
+  reqs <- c(id_col, label_col)
+  if (!is.null(value_col)) reqs <- c(reqs, value_col)
+  validate_columns(df, reqs)
   
   # Syms for tidy-eval
   id_sym  <- rlang::sym(id_col)
