@@ -7,8 +7,7 @@
 #' @param label_col Name of the label column (string), e.g. "label".
 #' @param id_col    Name of the document id column (string), e.g. "doc_id".
 #' @param value_col Optional numeric column to count; if NULL, each row counts as 1.
-#' @return A wide data frame with one row per document id, count columns per label
-#'         and corresponding *_share columns.
+#' @return A wide data frame with one row per document id, count columns per label and corresponding *_share columns.
 #' @import dplyr tidyr rlang
 #' @export
 article_level_matrix <- function(df,
@@ -20,12 +19,12 @@ article_level_matrix <- function(df,
     stop("value_col not found in df")
   }
   
-  # syms for tidy-eval
+  # Syms for tidy-eval
   id_sym  <- rlang::sym(id_col)
   lab_sym <- rlang::sym(label_col)
   
   dat <- df
-  # define per-row contribution n
+  # Define per-row contribution n
   if (is.null(value_col)) {
     dat$n <- 1
   } else {
@@ -39,7 +38,7 @@ article_level_matrix <- function(df,
                        values_from = n,
                        values_fill = 0)
   
-  # compute shares per row
+  # Compute shares per row
   count_cols <- setdiff(names(wide), id_col)
   totals <- rowSums(wide[count_cols], na.rm = TRUE)
   
