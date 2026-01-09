@@ -83,7 +83,4 @@ summarize_flows <- function(df,
     }
     return(out)
   }
-  
 
-# (out1 = summarize_flows(welt_sub, c("Usa", "Germany"), margin = "docs"))
-# (out2 = summarize_flows(welt_sub, c("Usa", "Germany"), margin = "entities"))
