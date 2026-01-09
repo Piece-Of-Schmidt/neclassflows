@@ -6,10 +6,11 @@
 \usage{
 top_items_per_period(
   df,
-  item = c("label", "word"),
+  item = "label",
   k = 5,
   label_of_interest = NULL,
   by = NULL,
+  label_col = "label",
   date_col = "date",
   unit = "month",
   include_share = TRUE,
@@ -17,26 +18,28 @@ top_items_per_period(
 )
 }
 \arguments{
-\item{df}{Long data.frame mit mind. Spalten \code{date}, \code{label}, \code{word}.}
+\item{df}{Long data.frame containing a date column and the columns specified in \code{item} and \code{label_col}.}
 
-\item{item}{Was soll gerankt werden? "label" oder "word".}
+\item{item}{Name of the column to be ranked (e.g., "label", "word", "clean_label").}
 
-\item{k}{Anzahl Top-Elemente pro Zeitraum/Gruppe.}
+\item{k}{Number of top elements to return per period/group.}
 
-\item{label_of_interest}{Optional: erst nach diesem Label filtern (z.B. nur "business").}
+\item{label_of_interest}{Optional: Filter for this specific value first (e.g., only "Europe").}
 
-\item{by}{Optionale Gruppierung neben dem Zeitraum (z.B. c("country")).}
+\item{by}{Optional: Character vector of columns for additional grouping besides period.}
 
-\item{date_col}{Datums-Spalte.}
+\item{label_col}{Name of the column containing country labels (used for filtering). Default: "label".}
 
-\item{unit}{Aggregationseinheit für floor_date (z.B. "month", "week", "quarter").}
+\item{date_col}{Name of the column containing publication dates.}
 
-\item{include_share}{TRUE → zusätzlich Anteil je Zeitraum/Gruppe berechnen.}
+\item{unit}{Unit for time aggregation (passed to \code{lubridate::floor_date}, e.g., "month", "week", "quarter").}
 
-\item{ties}{"keep" (alle bei Gleichstand) oder "first" (hart auf k begrenzen).}
+\item{include_share}{If TRUE, calculates the share of the item within its period/group.}
+
+\item{ties}{How to handle ties: "keep" (include all tied items) or "first" (strict limit to k).}
 }
 \value{
-Tibble mit Spalten: period, (by ...), item, n, (optional share), rank
+A tibble with columns: \code{period}, (any columns in \code{by}), \code{item}, \code{n}, (optional \code{share}), \code{rank}.
 }
 \description{
 Top-k items (labels or entities) per period (e.g., month)

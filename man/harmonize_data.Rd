@@ -2,12 +2,14 @@
 % Please edit documentation in R/harmonize_data.R
 \name{harmonize_data}
 \alias{harmonize_data}
-\title{Merge / reassign entities or labels to broader groups}
+\title{Harmonizes inconsistent labels or entities by mapping aliases to a target value.
+Useful for cleaning up country names (e.g., mapping "Belgium", "Luxembourg", "Netherlands" -> "Benelux")
+or grouping entities into broader categories.}
 \usage{
 harmonize_data(
   df,
   maps = list(),
-  along = c("label", "word"),
+  along = "label",
   regex = FALSE,
   case_insensitive = TRUE,
   out_col = "new_label",
@@ -15,25 +17,30 @@ harmonize_data(
 )
 }
 \arguments{
-\item{df}{Data frame with at least columns \code{word} and \code{label}.}
+\item{df}{Data frame containing at least the column specified in \code{along}.}
 
-\item{maps}{Named list: names = target labels, values = character vectors of aliases/patterns.}
+\item{maps}{A named list where names are the target labels and values are character vectors
+of aliases or patterns to match (e.g., \code{list("Benelux" = c("Belgium", "Luxembourg", "Netherlands"))}).}
 
-\item{along}{One of c("label","word"). See above.}
+\item{along}{Name of the column to search for matches (e.g., "label", "word", "clean_label"). Default: "label".}
 
-\item{regex}{Logical; if TRUE, aliases are treated as regex patterns.}
+\item{regex}{Logical; if TRUE, aliases in \code{maps} are treated as regular expressions.}
 
-\item{case_insensitive}{Logical; if TRUE, matching ignores case.}
+\item{case_insensitive}{Logical; if TRUE, matching ignores case differences.}
 
-\item{out_col}{Name of the output column to write (default "new_label").
-Will not overwrite \code{label} unless you set out_col = "label".}
+\item{out_col}{Name of the output column to store the harmonized labels. Default: "new_label". If set to the same name as an existing column, it will be overwritten.}
 
-\item{conflict}{How to resolve multiple matches per row:
-"last_wins" (default) or "first_wins".}
+\item{conflict}{Strategy to resolve multiple matches per row:
+"last_wins" (the last match in \code{maps} overwrites previous ones) or
+"first_wins" (the first match is kept).}
 }
 \value{
-Data frame with an added/overwritten column \code{out_col}.
+A data frame with the added or updated column \code{out_col}.
+Values not matched in \code{maps} retain their original value from the \code{label} column
+(or \code{along} column if used as fallback).
 }
 \description{
-Merge / reassign entities or labels to broader groups
+Harmonizes inconsistent labels or entities by mapping aliases to a target value.
+Useful for cleaning up country names (e.g., mapping "Belgium", "Luxembourg", "Netherlands" -> "Benelux")
+or grouping entities into broader categories.
 }

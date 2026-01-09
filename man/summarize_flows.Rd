@@ -28,7 +28,7 @@ summarize_flows(
 
 \item{id_col}{Article id column name}
 
-\item{label_col}{Label column name (e.g., "label" or "location_label")}
+\item{label_col}{Label column name (e.g., "label" or "clean_label")}
 
 \item{doc_threshold}{Share threshold for doc hits (only for margin="docs")}
 

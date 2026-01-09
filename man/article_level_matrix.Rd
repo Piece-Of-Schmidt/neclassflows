@@ -21,8 +21,7 @@ article_level_matrix(
 \item{value_col}{Optional numeric column to count; if NULL, each row counts as 1.}
 }
 \value{
-A wide data frame with one row per document id, count columns per label
-and corresponding *_share columns.
+A wide data frame with one row per document id, count columns per label and corresponding *_share columns.
 }
 \description{
 Builds a per-document wide table for a given label (e.g., "label"),
