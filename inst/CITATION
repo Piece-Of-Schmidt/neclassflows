@@ -1,0 +1,9 @@
+bibentry("article",
+  title        = "NEClass: A Lightweight LLM Pipeline for Context-Dependent Named Entity Classification",
+  author       = person(given = "Tobias", family = "Schmidt")
+  year         = "2026",
+  journal      = "Draft Version / TU Dortmund University",
+  note         = "R package version 0.1.0",
+  url          = "https://github.com/Piece-Of-Schmidt/NEClass",
+  textVersion  = "Schmidt, T. (2026). NEClass: A Lightweight LLM Pipeline for Context-Dependent Named Entity Classification. TU Dortmund University."
+)
