@@ -142,7 +142,7 @@ This separation of concerns allows you to run computationally expensive classifi
 
 ## 🖊 Citation
 
-If you use this package in your research, please cite:
+`neclassflows` is part of the NEClass methodological framework. Please cite the main paper:
 
 ```bibtex
 @article{schmidt2026neclass,
