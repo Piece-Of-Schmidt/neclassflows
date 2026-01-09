@@ -1,4 +1,4 @@
-Package: NEClasFlows
+Package: NEClassFlows
 Title: Tools to Analyze Cross-National Reporting and Entity Flows
 Version: 0.1.0
 Authors@R: person("Tobias", "Schmidt", email = "tobias3.schmidt@tu-dortmund.de", role = c("aut", "cre"))
@@ -17,3 +17,4 @@ Imports:
 Suggests:
   readr
 Config/testthat/edition: 3
+
