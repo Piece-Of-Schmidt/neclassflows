@@ -139,7 +139,7 @@ This package is the analytical companion to **[NEClass](https://github.com/Piece
 This separation of concerns allows you to run computationally expensive classification on a GPU server (or Colab) while performing exploratory analysis locally in R Studio.
 
 ---
-
+<!--
 ## 🖊 Citation
 
 `neclassflows` is part of the NEClass methodological framework. Please cite the main paper:
@@ -153,3 +153,4 @@ This separation of concerns allows you to run computationally expensive classifi
 }
 
 ```
+-->
